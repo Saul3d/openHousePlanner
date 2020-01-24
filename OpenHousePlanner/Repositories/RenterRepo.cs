@@ -20,7 +20,7 @@ namespace OpenHousePlanner.Repositories
             _connectionString = config.GetConnectionString("OpenHousePlanner");
         }
 
-        public Renter AddNewRenters(AllRentersDTO newRenter)
+        public Renter AddNewRenters(RentersDTO newRenter)
         {
             using (var db = new SqlConnection(_connectionString))
 
@@ -51,7 +51,7 @@ namespace OpenHousePlanner.Repositories
             }
         }
 
-        public Renter GetRentersById(int id)
+        public IEnumerable<Renter> GetRentersById(int id)
         {
             using (var db = new SqlConnection(_connectionString))
             {
@@ -59,7 +59,7 @@ namespace OpenHousePlanner.Repositories
                             from Renters
                             where Renters.Id = @renterId";
 
-                var renter = db.QueryFirst<Renter>(sql, new { renterId = id });
+                var renter = db.Query<Renter>(sql, new { renterId = id });
                 return renter;
             }
         }

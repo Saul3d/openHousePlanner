@@ -25,5 +25,6 @@ namespace OpenHousePlanner.Models
         public string EmploymentLength { get; set; }
         public string CurrentLandLord { get; set; }
         public string CurrentLandlordPhone { get; set; }
+        public string Notes { get; set; }
     }
 }
