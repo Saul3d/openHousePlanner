@@ -38,6 +38,7 @@ namespace OpenHousePlanner
             }));
 
             services.AddScoped<IUsersRepository, UserRepo>();
+            services.AddScoped<IRentersRepository, RenterRepo>();
 
             services.AddTransient<IConfiguration>(provider => Configuration);
         }
