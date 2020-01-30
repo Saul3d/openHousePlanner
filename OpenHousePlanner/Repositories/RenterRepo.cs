@@ -20,28 +20,6 @@ namespace OpenHousePlanner.Repositories
             _connectionString = config.GetConnectionString("OpenHousePlanner");
         }
 
-        public Renter AddNewRenters(RentersDTO newRenter)
-        {
-            using (var db = new SqlConnection(_connectionString))
-
-            {
-                var sql = @"INSERT INTO Renters
-                                       ([fName]
-                                       ,[lName]
-                                       ,[Email]
-                                       ,[Phone] 
-                                       ,[ImgUrl]
-                                       ,[Bio]
-                                                )
-                                    output inserted.*
-                                    VALUES
-                                       (@fname
-                                       ,@lname
-                                       ,@email
-                                       ,@phone)";
-                return db.QueryFirst<Renter>(sql, newRenter);
-            }
-        }
         public IEnumerable<Renter> GetAllRenters()
         {
             using (var db = new SqlConnection(_connectionString))
@@ -59,7 +37,7 @@ namespace OpenHousePlanner.Repositories
                             from Renters
                             where Renters.Id = @renterId";
 
-                var renter = db.Query<Renter>(sql, new { renterId = id });
+                var renter = db.Query<Renter>(sql, new {renterId = id});
                 return renter;
             }
         }
@@ -67,6 +45,40 @@ namespace OpenHousePlanner.Repositories
         public Renter GetRentersByEmail(string email)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<Renter> AddRenter(RentersDTO newRenter)
+        {
+            using (var db = new SqlConnection(_connectionString))
+
+            {
+                var sql = @"INSERT INTO [Renters]
+                                       ([FName]
+                                       ,[LName]
+                                       ,[Phone]
+                                       ,[Street]
+                                       ,[City]
+                                       ,[State]
+                                       ,[Zip]
+                                       ,[Email]
+                                       ,[DOB]
+                                       ,[Notes]
+                                                )
+                                    output inserted.*
+                                    VALUES
+                                       (@FName
+                                       ,@LName
+                                       ,@Phone
+                                       ,@Street
+                                       ,@City
+                                       ,@State
+                                       ,@Zip
+                                       ,@Email
+                                       ,@DOB
+                                       ,@Notes)";
+
+                return db.Query<Renter>(sql, newRenter);
+            }
         }
     }
 }

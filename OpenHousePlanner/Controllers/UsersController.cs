@@ -12,7 +12,8 @@ using OpenHousePlanner.Repositories;
 namespace OpenHousePlanner.Controllers
 {
     [Route("api/[controller]")]
-    public class UsersController : Controller
+    [ApiController]
+    public class UsersController : ControllerBase
     {
         private readonly ILogger<UsersController> _logger;
         private readonly IUsersRepository _repo;
