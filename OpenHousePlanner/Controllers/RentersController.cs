@@ -13,7 +13,8 @@ using OpenHousePlanner.Repositories;
 namespace OpenHousePlanner.Controllers
 {
     [Route("api/[controller]")]
-    public class RentersController : Controller
+    [ApiController]
+    public class RentersController : ControllerBase
     {
         private readonly ILogger<RentersController> _logger;
         private readonly IRentersRepository _repo;
@@ -37,19 +38,16 @@ namespace OpenHousePlanner.Controllers
             return _repo.GetRentersById(id);
         }
 
-        // POST api/values
+        // POST api/renters
         [HttpPost]
-        public IActionResult CreateNewRenter(RentersDTO addNewRenter)
+        public IActionResult CreateRenter(RentersDTO newRenter)
         {
-            var newRenter = new Renter
-            {
-                FName = addNewRenter.FName,
-                LName = addNewRenter.LName,
-                Email = addNewRenter.Email,
-                Phone = addNewRenter.Phone,
-                Notes = addNewRenter.Notes
-            };
+            newRenter.DOB = DateTime.Today;
+            var addNewRenter = _repo.AddRenter(newRenter);
+            return Ok(addNewRenter);
+
 
         }
+        
     }
 }

@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OpenHousePlanner.Models
+namespace OpenHousePlanner.DTOs
 {
-    public class Lease
+    public class LeasesDTO
     {
-        public int Id { get; set; }
         public DateTime LeaseAgreementDate { get; set; }
         public DateTime LeaseStartDate { get; set; }
         public DateTime RentDueDate { get; set; }
