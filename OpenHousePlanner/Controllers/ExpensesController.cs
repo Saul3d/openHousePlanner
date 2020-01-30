@@ -4,6 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using OpenHousePlanner.DTOs;
+using OpenHousePlanner.Models;
+using OpenHousePlanner.Repositories;
 
 namespace OpenHousePlanner.Controllers
 {
@@ -11,11 +15,19 @@ namespace OpenHousePlanner.Controllers
     [ApiController]
     public class ExpensesController : ControllerBase
     {
+        private readonly ILogger<ExpensesController> _logger;
+        private readonly IExpensesRepository _repo;
+
+        public ExpensesController(ILogger<ExpensesController> logger, IExpensesRepository repo)
+        {
+            _logger = logger;
+            _repo = repo;
+        }
         // GET: api/Expenses
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Expense> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            return _repo.GetAllExpenses();
         }
 
         // GET: api/Expenses/5
