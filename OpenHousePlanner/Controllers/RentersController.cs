@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OpenHousePlanner.DTOs;
 using OpenHousePlanner.Models;
 using OpenHousePlanner.Repositories;
 
@@ -24,16 +25,31 @@ namespace OpenHousePlanner.Controllers
         }
 
         // GET: api/<controller>
-        [HttpGet] public IEnumerable<Renter> GetAll()
+        [HttpGet]
+        public IEnumerable<Renter> GetAll()
         {
             return _repo.GetAllRenters();
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Renter> GetUser(int id)
+        public IEnumerable<Renter> GetUser(int id)
         {
             return _repo.GetRentersById(id);
         }
 
+        // POST api/values
+        [HttpPost]
+        public IActionResult CreateNewRenter(RentersDTO addNewRenter)
+        {
+            var newRenter = new Renter
+            {
+                FName = addNewRenter.FName,
+                LName = addNewRenter.LName,
+                Email = addNewRenter.Email,
+                Phone = addNewRenter.Phone,
+                Notes = addNewRenter.Notes
+            };
+
+        }
     }
 }
