@@ -31,22 +31,27 @@ namespace OpenHousePlanner.Controllers
         }
 
         // GET: api/Expenses/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public Expense GetExpense(int id)
         {
-            return "value";
+            return _repo.GetExpenseById(id);
         }
 
         // POST: api/Expenses
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult CreateNewExpense(ExpensesDTO newExpense)
         {
+            newExpense.purchaseDate = DateTime.Today;
+            var addNewExpense = _repo.AddExpense(newExpense);
+            return Ok(addNewExpense);
         }
 
         // PUT: api/Expenses/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult UpdateThisExpense(int id, Expense updatesForExpense)
         {
+            var updatedExpense = _repo.UpdateThisExpense(id, updatesForExpense);
+            return Ok(updatedExpense);
         }
 
         // DELETE: api/ApiWithActions/5
