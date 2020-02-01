@@ -56,8 +56,11 @@ namespace OpenHousePlanner.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult DeleteExpense(int id)
         {
+            _repo.Remove(id);
+
+            return Ok();
         }
     }
 }

@@ -112,5 +112,20 @@ namespace OpenHousePlanner.Repositories
             }
 
         }
+        public bool Remove(int id, bool isActive)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var sql = @"UPDATE [dbo].[Leases]
+                            SET
+                            [isActive] = @isActive
+                            WHERE id = @id";
+
+                return db.Execute(sql, new { id, isActive }) == 1;
+            }
+
+        }
+
     }
 }
+

@@ -13,5 +13,6 @@ namespace OpenHousePlanner.Repositories
         Expense GetExpenseById(int id);
         IEnumerable<Expense> AddExpense(ExpensesDTO newExpense);
         Expense UpdateThisExpense(int id, Expense updateExpense);
+        bool Remove(int id);
     }
 }

@@ -11,48 +11,48 @@ using Microsoft.Extensions.Configuration;
 
 namespace OpenHousePlanner.Repositories
 {
-    public class RenterRepo : IRentersRepository
+    public class TenantRepo : ITenantsRepository
     {
         private readonly string _connectionString;
 
-        public RenterRepo(IConfiguration config)
+        public TenantRepo(IConfiguration config)
         {
             _connectionString = config.GetConnectionString("OpenHousePlanner");
         }
 
-        public IEnumerable<Renter> GetAllRenters()
+        public IEnumerable<Tenant> GetAllTenants()
         {
             using (var db = new SqlConnection(_connectionString))
             {
-                var renters = db.Query<Renter>(@"Select * from Renters");
+                var renters = db.Query<Tenant>(@"Select * from Tenants");
                 return renters.ToList();
             }
         }
 
-        public IEnumerable<Renter> GetRentersById(int id)
+        public IEnumerable<Tenant> GetTenantById(int id)
         {
             using (var db = new SqlConnection(_connectionString))
             {
                 var sql = @"select *
-                            from Renters
-                            where Renters.Id = @renterId";
+                            from Tenants
+                            where Tenants.Id = @tenantId";
 
-                var renter = db.Query<Renter>(sql, new {renterId = id});
+                var renter = db.Query<Tenant>(sql, new {tenantId = id});
                 return renter;
             }
         }
 
-        public Renter GetRentersByEmail(string email)
+        public Tenant GetTenantsByEmail(string email)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Renter> AddRenter(RentersDTO newRenter)
+        public IEnumerable<Tenant> AddTenants(TenantsDTO newTenant)
         {
             using (var db = new SqlConnection(_connectionString))
 
             {
-                var sql = @"INSERT INTO [Renters]
+                var sql = @"INSERT INTO [Tenants]
                                        ([FName]
                                        ,[LName]
                                        ,[Phone]
@@ -63,6 +63,7 @@ namespace OpenHousePlanner.Repositories
                                        ,[Email]
                                        ,[DOB]
                                        ,[Notes]
+                                       ,[IsActive]
                                                 )
                                     output inserted.*
                                     VALUES
@@ -75,10 +76,24 @@ namespace OpenHousePlanner.Repositories
                                        ,@Zip
                                        ,@Email
                                        ,@DOB
-                                       ,@Notes)";
+                                       ,@Notes)
+                                       ,@IsActive";
 
-                return db.Query<Renter>(sql, newRenter);
+                return db.Query<Tenant>(sql, newTenant);
             }
+        }
+        public bool Remove(int id, bool isActive)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var sql = @"UPDATE [dbo].[Tenants]
+                            SET
+                            [isActive] = @isActive
+                            WHERE id = @id";
+
+                return db.Execute(sql, new { id, isActive }) == 1;
+            }
+
         }
     }
 }

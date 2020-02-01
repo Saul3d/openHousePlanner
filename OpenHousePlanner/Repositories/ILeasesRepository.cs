@@ -13,5 +13,6 @@ namespace OpenHousePlanner.Repositories
         IEnumerable<Lease> GetLeaseById(int id);
         IEnumerable<Lease> AddLease(LeasesDTO newLease);
         Lease UpdateThisLease(int id, Lease updatedLease);
+        bool Remove(int id, bool isActive);
     }
 }
