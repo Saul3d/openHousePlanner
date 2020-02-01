@@ -27,6 +27,63 @@ namespace OpenHousePlanner.Repositories
                 return expenses.ToList();
             }
         }
+        public Expense GetExpenseById(int id)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var sql = @"select * 
+                            from Expenses
+                            where Expenses.Id = @expenseId";
+                var expense = db.QueryFirst<Expense>(sql, new { expenseId = id });
+                return expense;
+            }
+
+        }
+
+        public IEnumerable<Expense> AddExpense(ExpensesDTO newExpense)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var sql = @"INSERT INTO [Expenses]
+                                       ([expenseName]
+                                        ,[cost]
+                                        ,[purchaseDate]
+                                        ,[category]
+                                        ,[rentalId]
+                                         )
+                                         output inserted.*
+                                        VALUES
+                                        (@expenseName
+                                        ,@cost
+                                        ,@purchaseDate
+                                        ,@category
+                                        ,@rentalId)";
+                return db.Query<Expense>(sql, newExpense);
+            }
+        }
+
+        public Expense UpdateThisExpense(int id, Expense updatesForExpense)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var sql = @"UPDATE [dbo].[Expenses]
+                            SET
+                                [expenseName] = @expenseName
+                                ,[cost] = @cost
+                                ,[purchaseDate] = @purchaseDate
+                                ,[category] = @category
+                                ,[rentalId] = @rentalId   
+
+                            output inserted.*
+                            WHERE id = @id";
+
+                updatesForExpense.Id = id;
+                
+                var newUpdatedExpenses = db.QueryFirst<Expense>(sql, updatesForExpense);
+                
+                return newUpdatedExpenses;
+            }
+        }
 
     }
 }
