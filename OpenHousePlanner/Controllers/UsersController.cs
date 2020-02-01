@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OpenHousePlanner.DTOs;
 using OpenHousePlanner.Models;
 using OpenHousePlanner.Repositories;
 
@@ -35,6 +36,13 @@ namespace OpenHousePlanner.Controllers
         public ActionResult<User> GetUser(int id)
         {
             return _repo.GetUserById(id);
+        }
+
+        [HttpPost]
+        public IActionResult CreateNewUser(NewUsersDTO newUser)
+        {
+            var addNewUser = _repo.AddUsers(newUser);
+            return Ok(addNewUser);
         }
     }
 }

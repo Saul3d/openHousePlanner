@@ -66,6 +66,43 @@ namespace OpenHousePlanner.Repositories
             }
         }
 
+        public IEnumerable<User> AddUsers(NewUsersDTO newUsers)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var sql = @"INSERT INTO [Users]
+                          ([FName]
+                          ,[MInitial]
+                          ,[LName]
+                          ,[Phone]
+                          ,[Street]
+                          ,[City]
+                          ,[State]
+                          ,[Zip]
+                          ,[Email]
+                          ,[CreditCardNumber]
+                          ,[ExpirationDate]
+                          ,[SecurityCode]
+                          ,[isActive]
+                          )
+                          output inserted.*
+                          VALUES
+                          (@FName
+                          ,@MInitial
+                          ,@LName
+                          ,@Phone
+                          ,@Street
+                          ,@City
+                          ,@State
+                          ,@Zip
+                          ,@Email
+                          ,@CreditCardNumber
+                          ,@ExpirationDate
+                          ,@SecurityCode
+                          ,@isActive)";
+                return db.Query<User>(sql, newUsers);
+            }
+        }
         public User GetUserByEmail(string email)
         {
             throw new NotImplementedException();

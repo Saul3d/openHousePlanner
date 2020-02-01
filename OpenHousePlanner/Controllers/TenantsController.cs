@@ -38,7 +38,7 @@ namespace OpenHousePlanner.Controllers
             return _repo.GetTenantById(id);
         }
 
-        // POST api/renters
+        // POST api/<controller>
         [HttpPost]
         public IActionResult CreateTenant(TenantsDTO newTenant)
         {
@@ -47,6 +47,8 @@ namespace OpenHousePlanner.Controllers
             return Ok(addNewTenant);
         }
 
+        // Post api/<controller>?id=<int>&isActive<bool>
+        [HttpDelete]
         public IActionResult DeleteTenant(int id, bool isActive)
         {
             _repo.Remove(id, isActive);
