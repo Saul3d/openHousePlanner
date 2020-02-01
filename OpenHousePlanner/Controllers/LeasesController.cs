@@ -55,7 +55,7 @@ namespace OpenHousePlanner.Controllers
             return Ok(updatedLease);
         }
 
-        // DELETE api/<controller>/5
+        // DELETE api/<controller>?id=<int>&isActive<bool>
         [HttpDelete]
         public IActionResult DeleteLease(int id, bool isActive)
         {
