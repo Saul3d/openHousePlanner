@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OpenHousePlanner.Models
 {
-    public class Renter: PersonBase
+    public class Tenant: PersonBase
     {
         public string Gender { get; set; }
         public Array References { get; set; }

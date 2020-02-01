@@ -85,5 +85,18 @@ namespace OpenHousePlanner.Repositories
             }
         }
 
+        public bool Remove(int id)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var sql = @"delete
+                            from Expenses 
+                            where id = @id";
+
+                return db.Execute(sql, new { id }) == 1;
+
+            }
+        }
+
     }
 }

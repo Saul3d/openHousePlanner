@@ -38,7 +38,7 @@ namespace OpenHousePlanner
             }));
 
             services.AddScoped<IUsersRepository, UserRepo>();
-            services.AddScoped<IRentersRepository, RenterRepo>();
+            services.AddScoped<ITenantsRepository, TenantRepo>();
             services.AddScoped<ILeasesRepository, leaseRepo>();
             services.AddScoped<IExpensesRepository, ExpenseRepo>();
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OpenHousePlanner.DTOs
 {
-    public class RentersDTO
+    public class TenantsDTO
     {
         public int Id { get; set; }
         public string FName { get; set; }
