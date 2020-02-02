@@ -8,6 +8,7 @@ namespace OpenHousePlanner.Models
 {
     public class User: PersonBase
     {
+        public bool isActive { get; set; }
         public string CreditCardNumber { get; set; }
         public DateTime ExpirationDate { get; set; }
         public string SecurityCode { get; set; }

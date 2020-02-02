@@ -12,7 +12,8 @@ namespace OpenHousePlanner.Repositories
         IEnumerable<User> GetAllUsers();
         User GetUserById(int id);
         User GetUserByEmail(string email);
-        IEnumerable<User> AddUsers(NewUsersDTO newTenant);
-
+        IEnumerable<User> AddUsers(NewUsersDTO newUser);
+        User UpdateThisUser(int id, User updatesForUser);
+        bool Remove(int id, bool isActive);
     }
 }
