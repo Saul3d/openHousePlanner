@@ -44,5 +44,20 @@ namespace OpenHousePlanner.Controllers
             var addNewUser = _repo.AddUsers(newUser);
             return Ok(addNewUser);
         }
+        // PUT api/<controller>/5
+        [HttpPut("{id}")]
+        public IActionResult UpdateThisUser(int id, User updatesForUser)
+        {
+            var updatedUser = _repo.UpdateThisUser(id, updatesForUser);
+            return Ok(updatedUser);
+        }
+
+        // DELETE api/<controller>?id=<int>&isActive<bool>
+        [HttpDelete]
+        public IActionResult DeleteUser(int id, bool isActive)
+        {
+            _repo.Remove(id, isActive);
+            return Ok();
+        }
     }
 }

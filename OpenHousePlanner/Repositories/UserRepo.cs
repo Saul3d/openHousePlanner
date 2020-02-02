@@ -107,5 +107,50 @@ namespace OpenHousePlanner.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public User UpdateThisUser(int id, User updatesForUser)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var sql = @"UPDATE [dbo].[Users]
+                          SET
+                          [FName] = @FName
+                          ,[MInitial] = @MInitial
+                          ,[LName] = @LName
+                          ,[Phone] = @Phone
+                          ,[Street] = @Street
+                          ,[City] = @City
+                          ,[State] = @State
+                          ,[Zip] = @Zip
+                          ,[Email] = @Email
+                          ,[CreditCardNumber] = @CreditCardNumber
+                          ,[ExpirationDate] = @ExpirationDate
+                          ,[SecurityCode] = @SecurityCode
+                          ,[isActive] = @isActive
+
+                          output inserted.*
+                          WHERE id = @id";
+
+                updatesForUser.Id = id;
+
+                var newUpdatedUser = db.QueryFirst<User>(sql, updatesForUser);
+                
+                return newUpdatedUser;
+            }
+        }
+
+        public bool Remove(int id, bool isActive)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var sql = @"UPDATE [dbo].[Users]
+                            SET
+                            [isActive] = @isActive
+                            WHERE id = @id";
+
+                return db.Execute(sql, new {id, isActive}) == 1;
+            }
+        }
+
     }
 }

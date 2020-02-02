@@ -110,7 +110,7 @@ namespace OpenHousePlanner.Repositories
                 
                 return newUpdatedLease;
             }
-
+            
         }
         public bool Remove(int id, bool isActive)
         {
