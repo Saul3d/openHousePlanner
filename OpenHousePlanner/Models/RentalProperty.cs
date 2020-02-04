@@ -5,20 +5,17 @@ using System.Threading.Tasks;
 
 namespace OpenHousePlanner.DTOs
 {
-    public class TenantsDTO
+    public class RentalProperty
     {
         public int Id { get; set; }
-        public string FName { get; set; }
-        public string MInitial { get; set; }
-        public string LName { get; set; }
-        public string Phone { get; set; }
         public string Street { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public string Zip { get; set; }
-        public string Email { get; set; }
-        public DateTime Dob { get; set; }
-        public string Notes { get; set; }
+        public int Bedrooms { get; set; }
+        public int Baths { get; set; }
+        public int Sqft { get; set; }
+        public bool HasTenants { get; set; }
         public bool IsActive { get; set; }
     }
 }
