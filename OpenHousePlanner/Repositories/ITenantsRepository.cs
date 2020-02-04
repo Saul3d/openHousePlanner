@@ -15,5 +15,6 @@ namespace OpenHousePlanner.Repositories
         Tenant GetTenantsByEmail(string email);
         IEnumerable<Tenant> AddTenants(TenantsDTO newTenant);
         bool Remove(int id, bool isActive);
+        Tenant UpdateThisTenant(int id, Tenant updatesForTenant);
     }
 }

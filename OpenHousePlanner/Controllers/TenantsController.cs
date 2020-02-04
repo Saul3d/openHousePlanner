@@ -42,9 +42,18 @@ namespace OpenHousePlanner.Controllers
         [HttpPost]
         public IActionResult CreateTenant(TenantsDTO newTenant)
         {
-            newTenant.DOB = DateTime.Today;
+            newTenant.Dob = DateTime.Today;
             var addNewTenant = _repo.AddTenants(newTenant);
             return Ok(addNewTenant);
+        }
+
+        // PUT api/<controller/5
+        [HttpPut("{id}")]
+        public IActionResult UpdateThisTenant(int id, Tenant updatesForTenant)
+        {
+            updatesForTenant.Dob = DateTime.Today;
+            var updatedTenants = _repo.UpdateThisTenant(id, updatesForTenant);
+            return Ok(updatedTenants);
         }
 
         // Post api/<controller>?id=<int>&isActive<bool>

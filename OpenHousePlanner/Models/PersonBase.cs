@@ -17,6 +17,7 @@ namespace OpenHousePlanner.Models
         public string State { get; set; }
         public string Zip { get; set; }
         public string Email { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime Dob { get; set; }
+        public bool IsActive { get; set; } 
     }
 }

@@ -47,6 +47,36 @@ namespace OpenHousePlanner.Repositories
             throw new NotImplementedException();
         }
 
+        public Tenant UpdateThisTenant(int id, Tenant updatesForTenant)
+        {
+            using (var db = new SqlConnection(_connectionString))
+            {
+                var sql = @"UPDATE [dbo].[Tenants]
+                          SET
+                          [FName] = @FName
+                          ,[MInitial] = @MInitial
+                          ,[LName] = @LName
+                          ,[Phone] = @Phone
+                          ,[Street] = @Street
+                          ,[City] = @City
+                          ,[State] = @State
+                          ,[Zip] = @Zip
+                          ,[Email] = @Email
+                          ,[DOB] = @DOB
+                          ,[Notes] = @Notes
+                          ,[isActive] = @isActive
+                          
+                          output inserted.*
+                          WHERE id = @id";
+
+                updatesForTenant.Id = id;
+
+                var newUpdatedTenant= db.QueryFirst<Tenant>(sql, updatesForTenant);
+
+                return newUpdatedTenant;
+            }
+        }
+
         public IEnumerable<Tenant> AddTenants(TenantsDTO newTenant)
         {
             using (var db = new SqlConnection(_connectionString))
