@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import Header from './components/LandingPage/LandingPageHeader/LandingPageHeader';
+import Footer from './components/LandingPage/LandingPageFooter/LandingPageFooter';
 import LandingPage from './components/LandingPage/LandingPage';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
