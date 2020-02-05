@@ -1,5 +1,8 @@
 @import './styles/reset.scss';
+@import './styles/colors.scss';
+
 
 *{
-  font-family: San-Serif;
+  font-family: "Proxima Nova", San-Serif !important;
+  color:$color4;
 }
