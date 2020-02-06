@@ -1,11 +1,15 @@
 import React from 'react';
 
+import Header from './LandingPageHeader/LandingPageHeader';
+import Footer from './LandingPageFooter/LandingPageFooter';
 import propertyGraph from '../../assets/image/PropertyValueGraph-v2.png';
 import calendarImage from '../../assets/image/calendar.png';
 import './LandingPage.scss'
 
 function LandingPage() {
     return(
+        <React.Fragment>
+        <Header />
         <main>
             <article className="feature dashboard">
                 
@@ -87,6 +91,8 @@ function LandingPage() {
                 </section>
             </article>       
         </main>
+        <Footer />
+        </React.Fragment>
     );
 }
 
