@@ -7,6 +7,7 @@ namespace OpenHousePlanner.DTOs
 {
     public class RentalPropertyDTO
     {
+        public int Id { get; set; }
         public string Street { get; set; }
         public string City { get; set; }
         public string State { get; set; }
@@ -16,5 +17,6 @@ namespace OpenHousePlanner.DTOs
         public int Sqft { get; set; }
         public bool HasTenants { get; set; }
         public bool IsActive { get; set; }
+        public string ImgUrl { get; set; }
     }
 }

@@ -55,6 +55,7 @@ namespace OpenHousePlanner.Repositories
                           ,[Sqft]
                           ,[HasTenants]
                           ,[IsActive]
+                          ,[imgUrl]
                           )
                           output inserted.*
                           VALUES
@@ -66,7 +67,8 @@ namespace OpenHousePlanner.Repositories
                           ,@Baths
                           ,@Sqft
                           ,@HasTenants
-                          ,@IsActive)";
+                          ,@IsActive)
+                          ,@imgUrl";
 
                 return db.QueryFirst<RentalProperty>(sql, newRentalProperty);
             }
@@ -87,6 +89,7 @@ namespace OpenHousePlanner.Repositories
                           ,[Sqft]= @Sqft
                           ,[HasTenants] = @HasTenants
                           ,[IsActive] = @IsActive
+                          ,[imgUrl] = @imgUrl
                           
                           output inserted.*
                           WHERE id = @id";
