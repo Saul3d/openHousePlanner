@@ -26,7 +26,7 @@ class Rental extends Component{
                     bedrooms={rental.bedrooms}
                     baths={rental.baths}
                     sqft={rental.sqft}  />
-        })
+             })
         return(
             <section className="rentals">
                 {rentals}
