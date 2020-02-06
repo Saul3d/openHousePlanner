@@ -17,5 +17,6 @@ namespace OpenHousePlanner.DTOs
         public int Sqft { get; set; }
         public bool HasTenants { get; set; }
         public bool IsActive { get; set; }
+        public string ImgUrl { get; set; }
     }
 }
