@@ -6,7 +6,7 @@ import './LandingPageHeader.scss';
 class Header extends React.Component {
     render() {
         return (
-            <header className="container">
+            <header className="lpcontainer">
                 <article className="register">
                     <div>
                         <img src={logo} alt="OpenHousePlanner" className="logo"/>

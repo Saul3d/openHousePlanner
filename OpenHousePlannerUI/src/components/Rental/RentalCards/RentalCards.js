@@ -1,36 +1,33 @@
 import React, { Component } from "react";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen } from '@fortawesome/free-solid-svg-icons'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import Modal from '../../../helpers/UI/Modal/Modal';
+
 import './RentalCards.scss';
 
 class RentalCards extends Component {
     state = {
-        props:[]
+        rentalInfo: {...this.props.rentalInfo},
     }
 
-    editRentalCardHandler = () => {
-        console.log('Edit Rental!');
-    };
+    deleteRentalCardHandler = () => console.log('Delete Rental!');
+    
+    goToLeaseHandler = () => console.log('Go to Lease');
 
-    deleteRentalCardHandler = () => {
-        console.log('Delete Rental!');
-    };
-
-    goToLeaseHandler = () => {
-        console.log('Go to Lease');
-    }
 
     render(){
+        console.log(this.state.props);
         return(
+            <React.Fragment>
             <article className="RentalCards" >
                 <section className="icon-section">
                     <div className="button-wrapper">
-                        <button className="edit" onClick={this.editRentalCardHandler}><FontAwesomeIcon icon={faPen} className="icon"  /></button>
-                        <button className="delete"onClick={this.deleteRentalCardHandler}><FontAwesomeIcon icon={faTrashAlt} className="icon" /></button>
-                        <button className="delete" onClick={this.goToLeaseHandler}><FontAwesomeIcon icon={faExternalLinkAlt} className="icon" /></button>                    </div>
+                        <Modal getRentals={this.props.getRentals} rentalInfo={this.state.rentalInfo}/>
+                        <button className="delete"onClick={this.props.updateRental}><FontAwesomeIcon icon={faTrashAlt} className="icon" /></button>
+                        <button className="delete" onClick={this.goToLeaseHandler}><FontAwesomeIcon icon={faExternalLinkAlt} className="icon" /></button>
+                    </div>
                 </section>
                 <img src={this.props.imgUrl} alt="House" className="cardImage"/>
                 <div className="wrapper">
@@ -47,7 +44,7 @@ class RentalCards extends Component {
                     </div>
                 </div>
             </article>
-
+            </React.Fragment>
         )
     }
 }
