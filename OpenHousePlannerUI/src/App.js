@@ -12,7 +12,7 @@ function App() {
     <React.Fragment>
       <Switch>
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/properties" component={Rental} />
+        <Route path="/rentalproperty" component={Rental} />
         <Route exact path="/" component={LandingPage} />
       </Switch>
     </React.Fragment>
