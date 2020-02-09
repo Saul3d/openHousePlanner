@@ -3,10 +3,10 @@ import React from 'react';
 import RentalRequest from '../../data/RentalRequest';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import RentalForm from '../RentalForm/RentalForm'
+import RentalForm from '../../../components/Rental/RentalForm/RentalForm';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-class RentalFromModal extends React.Component {
+class DefaultModal extends React.Component {
 
   constructor(props) {
     super(props);
@@ -50,4 +50,4 @@ class RentalFromModal extends React.Component {
   }
 }
 
-export default RentalFromModal;
+export default DefaultModal;

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import Modal from '../../../helpers/UI/Modal/Modal';
+import DefaultModal from '../../../helpers/UI/DefaultModal/DefaultModal';
 
 import './RentalCards.scss';
 
@@ -24,7 +24,7 @@ class RentalCards extends Component {
             <article className="RentalCards" >
                 <section className="icon-section">
                     <div className="button-wrapper">
-                        <Modal getRentals={this.props.getRentals} rentalInfo={this.state.rentalInfo}/>
+                        <DefaultModal getRentals={this.props.getRentals} rentalInfo={this.state.rentalInfo}/>
                         <button className="delete"onClick={this.props.updateRental}><FontAwesomeIcon icon={faTrashAlt} className="icon" /></button>
                         <button className="delete" onClick={this.goToLeaseHandler}><FontAwesomeIcon icon={faExternalLinkAlt} className="icon" /></button>
                     </div>
