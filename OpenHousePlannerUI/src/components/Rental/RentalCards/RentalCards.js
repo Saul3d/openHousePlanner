@@ -12,20 +12,22 @@ class RentalCards extends Component {
         rentalInfo: {...this.props.rentalInfo},
     }
 
-    deleteRentalCardHandler = () => console.log('Delete Rental!');
+    deleteRentalCardHandler = () => {
+        this.setState({rentalInfo: !this.state.rentalInfo.isActive});
+        setTimeout(() => console.log(this.state.rentalInfo), 3000);
+    }
     
     goToLeaseHandler = () => console.log('Go to Lease');
 
-
     render(){
-        console.log(this.state.props);
+        console.log(this.state.rentalInfo);
         return(
             <React.Fragment>
             <article className="RentalCards" >
                 <section className="icon-section">
                     <div className="button-wrapper">
                         <DefaultModal getRentals={this.props.getRentals} rentalInfo={this.state.rentalInfo}/>
-                        <button className="delete"onClick={this.props.updateRental}><FontAwesomeIcon icon={faTrashAlt} className="icon" /></button>
+                        <button className="delete"onClick={this.deleteRentalCardHandler}><FontAwesomeIcon icon={faTrashAlt} className="icon" /></button>
                         <button className="delete" onClick={this.goToLeaseHandler}><FontAwesomeIcon icon={faExternalLinkAlt} className="icon" /></button>
                     </div>
                 </section>

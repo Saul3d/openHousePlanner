@@ -24,7 +24,6 @@ class Rental extends Component{
             return <RentalCards 
                     key={rental.id}
                     rentalInfo={rental}
-                    getRentals={this.getRentals}
                     imgUrl={rental.imgUrl}
                     street={rental.street} 
                     city={rental.city}
@@ -34,6 +33,7 @@ class Rental extends Component{
                     baths={rental.baths}
                     sqft={rental.sqft}
                     hasTenants={rental.hasTenants}
+                    getRentals={this.getRentals}
                     update = {this.updateRental}  
                     saveChanges = {this.saveChanges}
                 />
