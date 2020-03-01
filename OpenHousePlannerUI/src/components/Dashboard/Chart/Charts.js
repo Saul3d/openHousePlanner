@@ -20,18 +20,72 @@ class Charts extends Component {
 
     render(){
 
-        const chartTypeName= this.props.chartType;
+        const ChartTypeName= this.props.chartType;
+        let myChart;
+        switch(ChartTypeName){
+            case 'Bar':
+                myChart = <Bar
+                data={this.state.chartData}
+                options={{
+                    maintainAspectRatio:false,
+                    responsive: true,
+                    title:{
+                        display:true,
+                        text:`Largest Cities in ${this.props.location}`,
+                        fontSize:25
+                    },
+                    legend:{
+                        display:true,
+                        position: 'top'
+                    }
+                }}/>;
+            break;
+            
+            case 'Line':
+                myChart = <Line
+                data={this.state.chartData}
+                options={{
+                    maintainAspectRatio:false,
+                    responsive: true,
+                    title:{
+                        display:true,
+                        text:`Largest Cities in ${this.props.location}`,
+                        fontSize:25
+                    },
+                    legend:{
+                        display:true,
+                        position: 'top'
+                    }
+                }}/>;
+            break; 
+
+            case 'Pie':
+                myChart = <Pie
+                data={this.state.chartData}
+                options={{
+                    maintainAspectRatio:false,
+                    responsive: true,
+                    title:{
+                        display:true,
+                        text:`Largest Cities in ${this.props.location}`,
+                        fontSize:25
+                    },
+                    legend:{
+                        display:true,
+                        position: 'top'
+                    }
+                }}/>;
+            break;                    
+        }
         
         return(
             <div className="chart">
-                {<Bar
+                {myChart}
+                {/* {<Bar
                     data={this.state.chartData}
                     options={{
                         maintainAspectRatio:false,
-                        responsive: true
-                    }}
-                    options={{ 
-                        maintainAspectRatio: false,
+                        responsive: true,
                         title:{
                             display:true,
                             text:`Largest Cities in ${this.props.location}`,
@@ -41,9 +95,9 @@ class Charts extends Component {
                             display:true,
                             position: 'top'
                         }
-                    }}
-                />}
-            </div>
+                    }} 
+                />} */}
+            </div> 
         )
     }
 }
