@@ -1,8 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-import './RentalForm.scss';
-
 class RentalForm extends React.Component {
   state = {
     rentalInfo: {}
@@ -15,7 +13,6 @@ class RentalForm extends React.Component {
   onRentalChange = (e) => {
     const newValue = e.target.value;
     let updateRentalInfo = {...this.state.rentalInfo};
-    console.log(updateRentalInfo[e.target.id]);
     updateRentalInfo[e.target.id] = newValue;
     this.setState({rentalInfo: updateRentalInfo});
     
@@ -80,7 +77,7 @@ class RentalForm extends React.Component {
             Has Tenant
           </Label>
         </FormGroup>
-        <Button color="primary" className="saveBtn" onClick={this.saveRentalInfo}>Save</Button>
+        <Button color="primary" onClick={this.saveRentalInfo}>Save</Button>
 
       </Form>
       </React.Fragment>
