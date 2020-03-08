@@ -51,18 +51,18 @@ class Dashboard extends React.Component{
     // {lg: layout1, md: layout2, ...}
     //const layouts = getLayoutsFromSomewhere();
     const layouts ={ 
-      lg:[{i: 'a', x: 0, y: 0, w: 1, h: 1, static: true},
-      {i: 'b', x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4},
-      {i: 'c', x: 4, y: 0, w: 1, h: 2}
+      lg:[{i: 'a', x: 0, y: 0, w: 3, h: 4},
+      {i: 'b', x: 3, y: 0, w: 6, h: 2, minW: 2, maxW: 4},
+      {i: 'c', x: 3, y: 1, w:3, h: 2}
       ]};
     return (
       <ResponsiveGridLayout className="layout" layouts={layouts}
         breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
         cols={{lg: 12, md: 10, sm: 6, xs: 4, xxs: 2}}
       >
-        <div key="1"><Charts chartData={this.state.chartData} chartType="Bar" location="Massachussetts"/></div>
-        <div key="2"><Charts chartData={this.state.chartData} chartType="Line"  /></div>
-        <div key="3"><Charts chartData={this.state.chartData} chartType="Pie"  /></div>
+        <div key="a"><Charts chartData={this.state.chartData} chartType="Bar" location="Massachussetts"/></div>
+        <div key="b"><Charts chartData={this.state.chartData} chartType="Line"  /></div>
+        <div key="c"><Charts chartData={this.state.chartData} chartType="Pie"  /></div>
       </ResponsiveGridLayout>
     )
     }
