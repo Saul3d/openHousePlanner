@@ -1,0 +1,48 @@
+@import '../../styles/colors.scss';
+
+// mixins
+@mixin displayContent{
+    display:flex;  
+    justify-content: center;
+    align-items:center; 
+    width:50%;
+    padding:1.875em;
+}
+  
+main{
+    background-color:$color3;
+    article.feature{
+        height:500px;
+        display:flex;
+        &:nth-child(even){
+            background-color:$color1;
+        }
+        
+        .imgSection,.copySection{
+            @include displayContent;
+            flex-direction:column;
+            .copy-wrapper{
+                display:flex;
+            }
+        }
+        .imgSection{
+            img{
+                width:90%;
+                box-shadow:3px 3px 10px #ccc;
+            }
+        }
+        h3{
+            font-size:1.75em;
+            align-self:flex-start;
+            margin-bottom:20px;
+        }
+    }
+    
+    
+    p{
+        line-height: 1.25em;
+        width:50%;
+        color:$color4;
+        padding:.25em;
+    }
+}

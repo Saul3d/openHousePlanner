@@ -1,0 +1,19 @@
+@import '../../../styles/colors.scss';
+
+.footer{
+    display:flex;
+    flex-direction:column;
+    background-color:$color5;
+    height:31.25em;
+    color:$color1;
+    padding:40px 40px 10px;
+    main{
+        display:flex;
+        flex:1 0 auto;
+        background-color:transparent;
+    }
+    .copyright{
+        font-size:.85em;
+        align-self:center;
+    }
+}
