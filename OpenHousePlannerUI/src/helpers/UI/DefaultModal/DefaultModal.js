@@ -15,6 +15,7 @@ class DefaultModal extends React.Component {
       modal: props.initialModalState
     };
   }
+    
     saveChanges = (rentalInfo) =>{
       RentalRequest.editRental(rentalInfo, rentalInfo.id).then(() => {
         this.props.getRentals();
